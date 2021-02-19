@@ -1,26 +1,53 @@
 import CartActionTypes from './cart.types';
-import { addItemToCart } from "./cart.utils";
+import { addItemToCart } from './cart.utils';
 
 const INITIAL_STATE = {
-    hidden: true,
-    cartitems: []
+  hidden: true,
+  cartItems: []
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        case 'TOGGLE_CART_HIDDEN':
-            return {
-                ...state,
-                hidden: !state.hidden
-            };
-        case CartActionTypes.ADD_ITEM:
-            return {
-                ...state,
-                cartitems: addItemToCart(state.cartitems, action.payload)
-            };
-            default:
-                return state;
-    }
-}
+  switch (action.type) {
+    case CartActionTypes.TOGGLE_CART_HIDDEN:
+      return {
+        ...state,
+        hidden: !state.hidden
+      };
+    case CartActionTypes.ADD_ITEM:
+      return {
+        ...state,
+        cartItems: addItemToCart(state.cartItems, action.payload)
+      };
+    default:
+      return state;
+  }
+};
 
 export default cartReducer;
+
+// import CartActionTypes from './cart.types';
+// import { addItemToCart } from "./cart.utils";
+
+// const INITIAL_STATE = {
+//     hidden: true,
+//     cartitems: []
+// };
+
+// const cartReducer = (state = INITIAL_STATE, action) => {
+//     switch (action.type) {
+//         case CartActionTypes.TOGGLE_CART_HIDDEN:
+//             return {
+//                 ...state,
+//                 hidden: !state.hidden
+//             };
+//         case CartActionTypes.ADD_ITEM:
+//             return {
+//                 ...state,
+//                 cartitems: addItemToCart(state.cartitems, action.payload)
+//             };
+//             default:
+//                 return state;
+//     }
+// }
+
+// export default cartReducer;
